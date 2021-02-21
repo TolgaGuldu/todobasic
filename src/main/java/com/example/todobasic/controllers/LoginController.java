@@ -1,6 +1,6 @@
 package com.example.todobasic.controllers;
 
-import com.example.todobasic.dto.Usedto;
+import com.example.todobasic.dto.Userdto;
 import com.example.todobasic.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,25 +40,25 @@ public class LoginController {
 
     @GetMapping("/register")
     public String registerPage(Model model) {
-        model.addAttribute("user", new Usedto());
+        model.addAttribute("user", new Userdto());
         return "register";
     }
 
     @PostMapping("/register")
-    public String registerNewUser(@ModelAttribute("user") @Valid Usedto usedto,
+    public String registerNewUser(@ModelAttribute("user") @Valid Userdto userdto,
                                   BindingResult result) {
-        logger.info("New user {}", usedto);
+        logger.info("New user {}", userdto);
 
         if (result.hasErrors()) {
             return "register";
         }
 
-        if (!usedto.getPassword().equals(usedto.getMatchingPassword())) {
+        if (!userdto.getPassword().equals(userdto.getMatchingPassword())) {
             result.rejectValue("password", "", "Password not matching");
             return "register";
         }
 
-        userService.create(usedto);
+        userService.create(userdto);
 
         return "redirect:/login";
     }

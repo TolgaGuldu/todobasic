@@ -46,8 +46,11 @@ public class ToDoService {
             if (userOptional.isPresent()) {
                 ToDo toDo = new ToDo();
                 toDo.setId(toDodto.getId());
+                toDo.setTitle(toDodto.getTitle());
                 toDo.setDescription(toDodto.getDescription());
                 toDo.setTargetDate(toDodto.getTargetDate());
+                toDo.setCreatedDate(toDodto.getCreatedDate());
+                toDo.setStatus(toDodto.getStatus());
                 toDo.setUser(userOptional.get());
                 toDoRepository.save(toDo);
             }

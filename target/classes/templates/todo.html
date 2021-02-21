@@ -40,6 +40,12 @@
             <form th:action="@{/todo/create}" th:object="${todo}" method="post">
                 <input type="hidden" th:field="*{id}">
                 <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="title" th:field="*{title}"
+                           placeholder="Enter title">
+                    <small class="text-danger" th:each="err: ${#fields.errors('title')}" th:text="${err}"></small>
+                </div>
+                <div class="form-group">
                     <label for="description">Description</label>
                     <input type="text" class="form-control" id="description" th:field="*{description}"
                            placeholder="Enter description">
@@ -49,6 +55,15 @@
                     <label for="target-date">Target date</label>
                     <input type="date" class="form-control" id="target-date" th:field="*{targetDate}">
                     <small class="text-danger" th:each="err: ${#fields.errors('targetDate')}" th:text="${err}"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select class="custom-select"  name="status" id="status" th:field="*{status}" size="4" required>
+                        <option th:each="status : ${T(com.example.todobasic.entity.status).values()}"
+                                th:value="${status}"
+                                th:text="${status.statusText}">status
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

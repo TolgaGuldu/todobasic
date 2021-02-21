@@ -1,7 +1,10 @@
 package com.example.todobasic.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * Created on February, 2021
@@ -18,6 +21,9 @@ public class ToDo {
     private Long id;
 
     @Column
+    private String title;
+
+    @Column
     private String description;
 
     @ManyToOne
@@ -25,7 +31,15 @@ public class ToDo {
     private User user;
 
     @Column
+    @CreationTimestamp
+    private LocalDateTime createdDate;
+
+    @Column
     private LocalDate targetDate;
+
+
+    @Column
+    private status status;
 
     public ToDo() {
     }
@@ -36,6 +50,14 @@ public class ToDo {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -60,5 +82,21 @@ public class ToDo {
 
     public void setTargetDate(LocalDate targetDate) {
         this.targetDate = targetDate;
+    }
+
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public status getStatus() {
+        return status;
+    }
+
+    public void setStatus(status status) {
+        this.status = status;
     }
 }

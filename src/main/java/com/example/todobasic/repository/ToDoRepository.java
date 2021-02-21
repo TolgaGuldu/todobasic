@@ -18,7 +18,9 @@ import java.util.List;
 @Repository
 public interface ToDoRepository extends CrudRepository<ToDo, Long> {
 
-    @Query("SELECT new com.example.todobasic.dto.ToDodto(t) FROM ToDo t " +
-            "WHERE t.user.id = :userId")
+    @Query("SELECT new com.example.todobasic.dto.ToDodto(t) " +
+            "FROM ToDo t " +
+            "WHERE t.user.id = :userId " +
+            "Order By t.status"  )
     List<ToDodto> findToDosByUserId(@Param("userId") Long userId);
 }

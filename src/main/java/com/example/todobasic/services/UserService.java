@@ -2,7 +2,7 @@ package com.example.todobasic.services;
 
 import com.example.todobasic.entity.User;
 import com.example.todobasic.repository.UserRepository;
-import com.example.todobasic.dto.Usedto;
+import com.example.todobasic.dto.Userdto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -33,10 +33,10 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void create(Usedto usedto) {
+    public void create(Userdto userdto) {
         User user = new User();
-        user.setUsername(usedto.getUsername());
-        user.setPassword(passwordEncoder.encode(usedto.getPassword()));
+        user.setUsername(userdto.getUsername());
+        user.setPassword(passwordEncoder.encode(userdto.getPassword()));
         userRepository.save(user);
     }
 

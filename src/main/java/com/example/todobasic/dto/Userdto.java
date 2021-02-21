@@ -8,7 +8,7 @@ import javax.validation.constraints.NotEmpty;
  * @author tolga
  */
 
-public class Usedto {
+public class Userdto {
 
     private long id;
 
@@ -21,7 +21,7 @@ public class Usedto {
     @NotEmpty
     private String matchingPassword;
 
-    public Usedto() {
+    public Userdto() {
     }
 
     public long getId() {
@@ -58,7 +58,7 @@ public class Usedto {
 
     @Override
     public String toString() {
-        return "Usedto{" +
+        return "Userdto{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
