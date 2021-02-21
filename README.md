@@ -1,4 +1,4 @@
 # todobasic
 
-her oku :  todo-basic.herokuapp.com
+her oku : https://todo-basic.herokuapp.com/login
  
